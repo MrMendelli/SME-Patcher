@@ -55,7 +55,7 @@ echo.
 echo.
 %cecho% {07}Infile: {07}%~nx1{\n}
 echo.
-%cecho% {0e}Press any key to proceed with verification.
+%cecho% {0e}Press any key to proceed with verification.{\n}
 pause > nul
 echo.
 
