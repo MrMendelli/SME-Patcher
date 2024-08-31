@@ -95,8 +95,6 @@ echo. & pause > nul
 %cecho% {0e}Patching {07}%~nx1{#}...{\n}
 echo.
 "%~dp0bin\xdelta.exe" -d -f -s "%~1" %PatchFile% "%~dp1Super Mario Eclipse %PatchName%.iso"
-cls
-echo.
 %cecho% {02}Patching completed.{\n}
 pause
 start "" explorer /select, "%~dp1Super Mario Eclipse %PatchName%.iso" & exit /b
