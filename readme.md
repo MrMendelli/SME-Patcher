@@ -3,7 +3,7 @@
 - [xdelta3](https://github.com/jmacd/xdelta)
 
 ## Use
-Drag-and-drop a Super Mario Sunshine dump onto the script to verify and patch for Super MArio Eclipse.
+Drag-and-drop a Super Mario Sunshine dump onto the script to verify and patch for Super Mario Eclipse.
 
 ## ToDo
 - Create a tree print of all patch files available in menu for multi-version support.
