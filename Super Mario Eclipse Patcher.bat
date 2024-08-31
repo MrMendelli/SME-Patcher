@@ -60,7 +60,6 @@ pause > nul
 echo.
 
 :ComputeHash
-echo.
 %cecho% {0e}Computing MD5 checksum...{\n}
 Set "MD5="
 for /f "skip=1 Delims=" %%# in ('certutil -hashfile "%~f1" MD5') do if not defined MD5 set MD5=%%#
