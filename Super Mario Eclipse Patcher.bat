@@ -37,7 +37,7 @@ echo.
 %cecho% {0e}The following requirements must be met for successful patching:{\n}
 %cecho% {\t}{07}Format ... {0a}ISO{\n}
 %cecho% {\t}{07}Region ... {0a}NTSC (USA){\n}
-%cecho% {\t}{07}MD5 ...... {0a}0c6d2edae9fdf40dfc410ff1623e4119.{\n}
+%cecho% {\t}{07}MD5 ...... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
 %cecho% {0c}Modified or compressed formats such as CISO, NKIT, ^& RVZ are unsupported!{\n}
 echo.
 %cecho% {0e}For other issues and support, please visit our Discord server @ {09}https://discord.gg/u6NHuHVRpJ{\n}
