@@ -65,7 +65,7 @@ set MD5=%MD5: =%
 if "%MD5%" equ "0c6d2edae9fdf40dfc410ff1623e4119" goto :ChecksumMatch
 title Error! & cls
 echo.
-%cecho% {\u07 \u07}beep x2
+%cecho% {\u07 \u07}
 %cecho% {0c}MD5 checksum mismatch! The MD5 of {07}%~nx1 {0c}does not match the required checksum:{\n}
 echo.
 %cecho% {0e}Required checksum ..... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
