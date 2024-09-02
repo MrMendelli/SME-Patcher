@@ -24,8 +24,6 @@ echo.
 pause > nul & exit /b
 
 :GameCheck
-for %%a in ("%~dp0patches\*.xdelta") do (set PatchFile="%%a")
-for %%a in ("%~dp0patches\*.xdelta") do (set PatchName=%%~na)
 if exist "%~1" goto :Main
 title Error! & cls
 echo.
@@ -64,9 +62,10 @@ echo.
 Set "MD5="
 for /f "skip=1 Delims=" %%# in ('certutil -hashfile "%~f1" MD5') do if not defined MD5 set MD5=%%#
 set MD5=%MD5: =%
-if "%MD5%" == "0c6d2edae9fdf40dfc410ff1623e4119" goto :PatchDump
+if "%MD5%" equ "0c6d2edae9fdf40dfc410ff1623e4119" goto :ChecksumMatch
 title Error! & cls
 echo.
+%cecho% {\u07 \u07}beep x2
 %cecho% {0c}MD5 checksum mismatch! The MD5 of {07}%~nx1 {0c}does not match the required checksum:{\n}
 echo.
 %cecho% {0e}Required checksum ..... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
@@ -79,9 +78,8 @@ echo.
 pause > nul & exit /b
 echo.
 
-:PatchDump
+:ChecksumMatch
 cls
-pushd "%~dp0"
 set InFile="%~nx1"
 echo.
 %cecho% {0a}MD5 checksum match! The MD5 of {07}%~nx1 {0a}matches the required checksum:{\n}
@@ -89,9 +87,30 @@ echo.
 %cecho% {0e}Required checksum ..... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
 %cecho% {0e}Your checksum ......... {0a}%MD5%{\n}
 echo.
-%cecho% {0e}Press any key to begin patching.{\n}
+%cecho% {0e}Press any key to proceed to patching.{\n}
 echo. & pause > nul
-%cecho% {0e}Patching {07}%~nx1{#}...{\n}
+
+:ListPatches
+title Super Mario Eclipse Patcher & cls
+pushd "%~dp0patches"
+::for %%a in ("*.xdelta") do (set PatchFiles="%%a")
+echo.
+%cecho% {0a}Available patches:{\n}
+echo.
+dir *.xdelta /b /a-d
+echo.
+set /p PatchFile="Apply patch: "
+if /i "%PatchFile%" neq "" goto :PatchDump
+echo.
+title Error! & cls
+echo.
+%cecho% {0c}You must select a patch from the list to proceed.{\n}
+pause > nul & goto :ListPatches
+
+:PatchDump
+for %%a in (%PatchFile%) do (set PatchName=%%~na)
+echo.
+%cecho% {0e}Patching {07}%~nx1{0e} with {07}%PatchName%{0e}...{\n}
 echo.
 "%~dp0bin\xdelta.exe" -d -f -s "%~1" %PatchFile% "%~dp1Super Mario Eclipse %PatchName%.iso"
 %cecho% {02}Patching completed.{\n}
