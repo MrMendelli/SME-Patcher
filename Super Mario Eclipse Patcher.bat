@@ -1,29 +1,48 @@
 @echo off
 
-:cEchoCheck
+:cechoCheck
 if exist "%~dp0bin\cecho.exe" goto :XdeltaCheck
 title Error! & cls & color 0c
 echo.
-echo .\bin\cecho.exe not found, exiting...
-pause > nul & exit /b
+echo .\bin\cecho.exe not found, re-extract then press any key to proceed.
+pause > nul
+goto :cechoCheck
 
 :XdeltaCheck
 set cecho="%~dp0bin\cecho.exe"
 if exist "%~dp0bin\xdelta.exe" goto :PatchCheck
 title Error! & cls
 echo.
-%cecho% {0c}.\bin\xdelta.exe not found, exiting...
-pause > nul & exit /b
+%cecho% {07}.\bin\xdelta.exe {0c}not found, re-extract then press any key to proceed.{\n}
+pause > nul
+goto :XdeltaCheck
 
 :PatchCheck
+md "%~dp0patches\" > nul 2>&1
 move /Y "%~dp0*.xdelta" "%~dp0patches\" > nul 2>&1
+rename "%~dp0patches\Super_Mario_Eclipse_v1_0.xdelta" "v1.0.0.xdelta" > nul 2>&1
+rename "%~dp0patches\Super_Mario_Eclipse_v1_0_hotfix_0.xdelta" "v1.0.1.xdelta" > nul 2>&1
 if exist "%~dp0patches\*.xdelta" goto :GameCheck
 title Error! & cls
 echo.
-%cecho% {0c}No patches found! A SME Xdelta patch file must be present in the .\patches folder to proceed.
-pause > nul & exit /b
+%cecho% {0c}No patches found in {07}.\patches{0c}! Download and place in the folder to proceed.{\n}
+%cecho% {0e}{\n}
+set /p choice="Download patches now? (y/n): "
+if /i "%choice%" equ "Y" goto :DownloadPatches
+if /i "%choice%" equ "N" exit /b
+echo.
+%cecho% {0c}You must enter 'y' or 'n' to proceed...{\n} & pause > nul
+goto :PatchCheck
+
+:DownloadPatches
+cls & echo.
+%cecho% {0e}Place patches in {07}.\patches\{0e}, then press any key to proceed.{\n}
+start https://gamebanana.com/mods/download/536309
+pause > nul
+goto :PatchCheck
 
 :GameCheck
+cls
 if exist "%~1" goto :Main
 title Error! & cls
 echo.
@@ -88,24 +107,24 @@ echo.
 %cecho% {0e}Your checksum ......... {0a}%MD5%{\n}
 echo.
 %cecho% {0e}Press any key to proceed to patching.{\n}
-echo. & pause > nul
+pause > nul
 
 :ListPatches
-title Super Mario Eclipse Patcher & cls
+title Super Mario Eclipse Patcher
 pushd "%~dp0patches"
-::for %%a in ("*.xdelta") do (set PatchFiles="%%a")
 echo.
-%cecho% {0a}Available patches:{\n}
+%cecho% {0e}Available patches:{\n}
+%cecho% {0a}
 echo.
 dir *.xdelta /b /a-d
 echo.
-set /p PatchFile="Apply patch: "
+%cecho% {0e}
+set /p PatchFile="Copy or type full patch name: "
 if /i "%PatchFile%" neq "" goto :PatchDump
-echo.
-title Error! & cls
+title Error!
 echo.
 %cecho% {0c}You must select a patch from the list to proceed.{\n}
-pause > nul & goto :ListPatches
+pause > nul & cls & goto :ListPatches
 
 :PatchDump
 for %%a in (%PatchFile%) do (set PatchName=%%~na)

@@ -1,13 +1,12 @@
 ## Patcher Changelog
-### v7a
+### v7f
 ```diff
-+ UI changes
-  * Cosmetic changes
-+ Multi-Patch Selection
++ Error Handling
+  * Checks for patches, prompts for download if none are present.
 ```
 
 ## Patcher ToDo
-~~- Make tree print of all patch files in menu for multi-version support.~~
-~~_*Adjust `:main` menu to select patch file by name from list._~~
+~~- Make tree print of all patch files in menu for multi-version support
+_*Adjust `:main` menu to select patch file by name from list._~~
 
-- Rebase in C++ with additional features.
+- Rebase in C++ with additional features
