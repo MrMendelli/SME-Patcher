@@ -131,7 +131,6 @@ for %%a in (%PatchFile%) do (set PatchName=%%~na)
 echo.
 %cecho% {0e}Patching {07}%~nx1{0e} with {07}%PatchName%{0e}...{\n}
 echo.
-"%~dp0bin\xdelta.exe" -d -f -s "%~1" %PatchFile% "%~dp1Super Mario Eclipse %PatchName%.iso"
+"%~dp0bin\xdelta.exe" -d -f -s "%~1" %PatchFile% "%~dp1(GMSE04) Super Mario Eclipse %PatchName%.iso"
 %cecho% {02}Patching completed.{\n}
 pause
-start "" explorer /select, "%~dp1Super Mario Eclipse %PatchName%.iso" & exit /b
