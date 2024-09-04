@@ -1,12 +1,9 @@
-## Changelog
-### v7f
-```diff
-+ Error Handling
-  * Checks for patches, prompts for download if none are present.
-```
+## Requirements
+- [cecho](https://www.codeproject.com/articles/17033/add-colors-to-batch-files)
+- [xdelta3](https://github.com/jmacd/xdelta)
+
+## Use
+Drag-and-drop a copy of Super Mario Sunshine onto the shell script to verify and patch to Super Mario Eclipse.
 
 ## ToDo
-~~- Make tree print of all patch files in menu for multi-version support
-_*Adjust `:main` menu to select patch file by name from list._~~
-
-- Rebase in C++ with additional features
+- Rebase in C++ with auto launch options.

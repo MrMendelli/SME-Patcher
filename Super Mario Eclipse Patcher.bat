@@ -22,6 +22,7 @@ md "%~dp0patches\" > nul 2>&1
 move /Y "%~dp0*.xdelta" "%~dp0patches\" > nul 2>&1
 rename "%~dp0patches\Super_Mario_Eclipse_v1_0.xdelta" "v1.0.0.xdelta" > nul 2>&1
 rename "%~dp0patches\Super_Mario_Eclipse_v1_0_hotfix_0.xdelta" "v1.0.1.xdelta" > nul 2>&1
+rename "%~dp0patches\Super_Mario_Eclipse_v1_0_hotfix_1.xdelta" "v1.0.2.xdelta" > nul 2>&1
 if exist "%~dp0patches\*.xdelta" goto :GameCheck
 title Error! & cls
 echo.
@@ -99,7 +100,6 @@ echo.
 
 :ChecksumMatch
 cls
-set InFile="%~nx1"
 echo.
 %cecho% {0a}MD5 checksum match! The MD5 of {07}%~nx1 {0a}matches the required checksum:{\n}
 echo.
