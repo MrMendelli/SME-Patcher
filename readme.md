@@ -6,4 +6,5 @@
 Drag-and-drop a copy of Super Mario Sunshine onto the shell script to verify and patch to Super Mario Eclipse.
 
 ## ToDo
-- Rebase in C++ with auto launch options.
+- Implement better patch user choice check
+- Rebase in C++ with auto launch options

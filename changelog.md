@@ -1,6 +1,12 @@
 ## 09/11/2024
 ### Minor Update
 ```diff
++ Added readme todo item
+* Minor UI message and phrasing changes
+```
+
+### Minor Update
+```diff
 * Minor UI message changes
 ```
 

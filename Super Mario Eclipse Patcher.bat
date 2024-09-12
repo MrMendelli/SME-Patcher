@@ -4,7 +4,7 @@
 if exist "%~dp0bin\cecho.exe" goto :XdeltaCheck
 title Error! & cls & color 0c
 echo.
-echo .\bin\cecho.exe not found, re-extract then press any key to proceed.
+echo .\bin\cecho.exe not found! Re-extract, then press any key to proceed...
 pause > nul
 goto :cechoCheck
 
@@ -13,7 +13,7 @@ set cecho="%~dp0bin\cecho.exe"
 if exist "%~dp0bin\xdelta.exe" goto :PatchCheck
 title Error! & cls
 echo.
-%cecho% {07}.\bin\xdelta.exe {0c}not found, re-extract then press any key to proceed.{\n}
+%cecho% {07}.\bin\xdelta.exe {0c}not found! Re-extract, then press any key to proceed...{\n}
 pause > nul
 goto :XdeltaCheck
 
@@ -26,7 +26,7 @@ rename "%~dp0patches\Super_Mario_Eclipse_v1_0_hotfix_1.xdelta" "v1.0.2.xdelta" >
 if exist "%~dp0patches\*.xdelta" goto :GameCheck
 title Error! & cls
 echo.
-%cecho% {0c}No patches found in {07}.\patches{0c}! Download and place in the folder to proceed.{\n}
+%cecho% {0c}No patches found in the {07}.\patches\ {0c}directory!{\n}
 %cecho% {0e}{\n}
 set /p choice="Download patches now? (y/n): "
 if /i "%choice%" equ "Y" goto :DownloadPatches
@@ -37,7 +37,7 @@ goto :PatchCheck
 
 :DownloadPatches
 cls & echo.
-%cecho% {0e}Place patches in the {07}.\patches\{0e} directory, then press any key to proceed.{\n}
+%cecho% {0e}Place patches in the {07}.\patches\ {0e}directory. Press any key to proceed...{\n}
 start https://gamebanana.com/mods/download/536309
 pause > nul
 goto :PatchCheck
@@ -73,7 +73,7 @@ echo.
 echo.
 %cecho% {07}Infile: {07}%~nx1{\n}
 echo.
-%cecho% {0e}Press any key to proceed with verification.{\n}
+%cecho% {0e}Press any key to proceed with dump verification...{\n}
 pause > nul
 echo.
 
@@ -106,7 +106,7 @@ echo.
 %cecho% {0e}Required checksum ..... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
 %cecho% {0e}Your checksum ......... {0a}%MD5%{\n}
 echo.
-%cecho% {0e}Press any key to proceed with patching.{\n}
+%cecho% {0e}Press any key to proceed with patching...{\n}
 pause > nul
 
 :ListPatches
@@ -123,7 +123,7 @@ set /p PatchFile="Copy or type full patch name: "
 if /i "%PatchFile%" neq "" goto :PatchDump
 title Error!
 echo.
-%cecho% {0c}You must select a patch from the list to proceed.{\n}
+%cecho% {0c}You must select a patch from the list to proceed!{\n}
 pause > nul & cls & goto :ListPatches
 
 :PatchDump
