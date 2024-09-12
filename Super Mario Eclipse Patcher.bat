@@ -37,7 +37,7 @@ goto :PatchCheck
 
 :DownloadPatches
 cls & echo.
-%cecho% {0e}Place patches in {07}.\patches\{0e}, then press any key to proceed.{\n}
+%cecho% {0e}Place patches in the {07}.\patches\{0e} directory, then press any key to proceed.{\n}
 start https://gamebanana.com/mods/download/536309
 pause > nul
 goto :PatchCheck
@@ -106,7 +106,7 @@ echo.
 %cecho% {0e}Required checksum ..... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
 %cecho% {0e}Your checksum ......... {0a}%MD5%{\n}
 echo.
-%cecho% {0e}Press any key to proceed to patching.{\n}
+%cecho% {0e}Press any key to proceed with patching.{\n}
 pause > nul
 
 :ListPatches
