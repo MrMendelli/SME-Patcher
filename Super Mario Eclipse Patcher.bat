@@ -1,5 +1,8 @@
 @echo off
 
+md "%~dp0bin\"
+md "%~dp0patches\"
+
 :cechoCheck
 if exist "%~dp0bin\cecho.exe" goto :XdeltaCheck
 title Error! & cls & color 0c
@@ -37,7 +40,7 @@ goto :PatchCheck
 
 :DownloadPatches
 cls & echo.
-%cecho% {0e}Place patches in the {07}.\patches\ {0e}directory. Press any key to proceed...{\n}
+%cecho% {0e}Place patches in the {07}.\patches\ {0e}directory then press any key to proceed...{\n}
 start https://gamebanana.com/mods/download/536309
 pause > nul
 goto :PatchCheck
@@ -49,17 +52,15 @@ title Error! & cls
 echo.
 %cecho% {0c}No game dump supplied! Drag-and-drop your copy of Super Mario Sunshine onto this script to patch it.{\n}
 echo.
+%cecho% {0e}The following requirements must be met for successful patching:{\n}
+%cecho% {\t}{07}Format {07}... {0a}ISO{\n}
+%cecho% {\t}{07}Region {07}... {0a}NTSC (USA){\n}
+%cecho% {0e}{4e}Modified or compressed formats such as CISO, NKIT, ^& RVZ are unsupported!{\n}
+echo.
 %cecho% {0c}Piracy is not condoned or endorsed by Eclipse Team, you must legally dump your own copy of the game!{\n}
 %cecho% {0e}Dumping guide: {09}https://wii.hacks.guide/dump-games.html{\n}
-echo.
-%cecho% {0e}The following requirements must be met for successful patching:{\n}
-%cecho% {\t}{07}Format ... {0a}ISO{\n}
-%cecho% {\t}{07}Region ... {0a}NTSC (USA){\n}
-%cecho% {\t}{07}MD5 ...... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
-%cecho% {0c}Modified or compressed formats such as CISO, NKIT, ^& RVZ are unsupported!{\n}
-echo.
 %cecho% {0e}For other issues and support, please visit our Discord server @ {09}https://discord.gg/u6NHuHVRpJ{\n}
-%cecho% {0c}IF YOU ARE UPDATING, PATCH FROM THE ORIGINAL COPY, NOT A COPY THAT HAS ALREADY BEEN PATCHED!{\n}
+%cecho% {0e}{4e}If you are updating Super Mario Eclipse, patch from your original copy of Super Mario Sunshine!{\n}
 pause > nul & exit /b
 
 :Main
@@ -67,18 +68,17 @@ title Super Mario Eclipse Patcher
 echo.
 %cecho% {0c}Piracy is not condoned or endorsed by Eclipse Team, you must legally dump your own copy of the game!{\n}
 %cecho% {0e}Dumping guide: {09}https://wii.hacks.guide/dump-games.html{\n}
-echo.
 %cecho% {0e}For other issues and support, please visit our Discord server @ {09}https://discord.gg/u6NHuHVRpJ{\n}
-%cecho% {0c}IF YOU ARE UPDATING, PATCH FROM THE ORIGINAL COPY, NOT A COPY THAT HAS ALREADY BEEN PATCHED!{\n}
 echo.
-%cecho% {07}Infile: {07}%~nx1{\n}
+%cecho% {0e}Infile: {07}%~nx1{\n}
 echo.
-%cecho% {0e}Press any key to proceed with dump verification...{\n}
+%cecho% {0e}{4e}If you are updating Super Mario Eclipse, patch from your original copy of Super Mario Sunshine!{\n}
+%cecho% {0e}Press any key to proceed with verification.{\n}
 pause > nul
 echo.
 
 :ComputeHash
-%cecho% {0e}Computing MD5 checksum...{\n}
+%cecho% {0e}Calculating MD5 checksum...{\n}
 Set "MD5="
 for /f "skip=1 Delims=" %%# in ('certutil -hashfile "%~f1" MD5') do if not defined MD5 set MD5=%%#
 set MD5=%MD5: =%
@@ -88,13 +88,18 @@ echo.
 %cecho% {\u07 \u07}
 %cecho% {0c}MD5 checksum mismatch! The MD5 of {07}%~nx1 {0c}does not match the required checksum:{\n}
 echo.
-%cecho% {0e}Required checksum ..... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
-%cecho% {0e}Your checksum ......... {0c}%MD5%{\n}
+%cecho% {0e}Required checksum {07}..... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
+%cecho% {0e}Your checksum {07}......... {0c}%MD5%{\n}
 echo.
-%cecho% {0c}The game must be redumped.{\n}
+%cecho% {0e}The following requirements must be met for successful patching:{\n}
+%cecho% {\t}{07}Format {07}... {0a}ISO{\n}
+%cecho% {\t}{07}Region {07}... {0a}NTSC (USA){\n}
+%cecho% {0e}{4e}Modified or compressed formats such as CISO, NKIT, ^& RVZ are unsupported! The game must be redumped.{\n}
 echo.
 %cecho% {0c}Piracy is not condoned or endorsed by Eclipse Team, you must legally dump your own copy of the game!{\n}
 %cecho% {0e}Dumping guide: {09}https://wii.hacks.guide/dump-games.html{\n}
+%cecho% {0e}For other issues and support, please visit our Discord server @ {09}https://discord.gg/u6NHuHVRpJ{\n}
+%cecho% {0e}{4e}If you are updating Super Mario Eclipse, patch from your original copy of Super Mario Sunshine!{\n}
 pause > nul & exit /b
 echo.
 
@@ -103,23 +108,20 @@ cls
 echo.
 %cecho% {0a}MD5 checksum match! The MD5 of {07}%~nx1 {0a}matches the required checksum:{\n}
 echo.
-%cecho% {0e}Required checksum ..... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
-%cecho% {0e}Your checksum ......... {0a}%MD5%{\n}
-echo.
-%cecho% {0e}Press any key to proceed with patching...{\n}
-pause > nul
+%cecho% {0e}Required checksum {07}..... {0a}0c6d2edae9fdf40dfc410ff1623e4119{\n}
+%cecho% {0e}Your checksum {07}......... {0a}%MD5%{\n}
 
 :ListPatches
 title Super Mario Eclipse Patcher
 pushd "%~dp0patches"
 echo.
 %cecho% {0e}Available patches:{\n}
-%cecho% {0a}
+%cecho% {0d}
 echo.
 dir *.xdelta /b /a-d
 echo.
 %cecho% {0e}
-set /p PatchFile="Copy or type full patch name: "
+set /p PatchFile="Copy or type the full patch name from the above list: "
 if /i "%PatchFile%" neq "" goto :PatchDump
 title Error!
 echo.
