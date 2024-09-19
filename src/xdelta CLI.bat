@@ -106,7 +106,7 @@ cls
 echo.
 %cecho% {0a}MD5 checksum match! The MD5 of {07}%~nx1 {0a}matches the required checksum:{\n}
 echo.
-%cecho% {0e}Required checksum: {0a}%VanillaChecksum%{\n}
+%cecho% {0e}%GameTitle% checksum: {0a}%VanillaChecksum%{\n}
 %cecho% {07}%~nx1 {0e}checksum: {0a}%MD5%{\n}
 
 :ListPatches
