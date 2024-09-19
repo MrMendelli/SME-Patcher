@@ -3,7 +3,7 @@
 - [xdelta3](https://github.com/jmacd/xdelta)
 
 ## Use
-Drag-and-drop a copy of Super Mario Sunshine onto the shell script to verify and patch to Super Mario Eclipse.
+Boilerplate script for applying xdelta patches to files.
 
 ## ToDo
 - Implement better patch user choice check

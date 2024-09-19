@@ -1,3 +1,20 @@
+## 09/18/39
+### Moderate Update
+```diff
+* Changed main source code to template code
+* Rebranded repository
+ * Updated repository name
+ * Updated repository details
+ * Updated releases
+* Updated readme
+```
+
+## 09/17/2024
+### Major Update
+```diff
++ Implemented update patching
+```
+
 ## 09/16/2024
 ### Moderate Update
 ```diff
