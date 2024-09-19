@@ -1,6 +1,11 @@
 ## 09/18/39
 ### Minor Update
 ```diff
+* Corrected globals mistake
+```
+
+### Minor Update
+```diff
 * Corrected UI mistake
 ```
 

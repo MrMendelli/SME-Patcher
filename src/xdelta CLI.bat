@@ -10,9 +10,6 @@ set "URL="
 set "VanillaChecksum="
 set "OutFormat="
 
-md "%~dp0bin\"
-md "%~dp0patches\"
-
 :: <NoFileMsg>
 :: <VanillaPatchMsg>
 :: <MismatchMsg>
