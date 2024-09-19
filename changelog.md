@@ -1,4 +1,9 @@
 ## 09/18/39
+### Minor Update
+```diff
+* Updated globals
+```
+
 ### Moderate Update
 ```diff
 * Changed main source code to template code

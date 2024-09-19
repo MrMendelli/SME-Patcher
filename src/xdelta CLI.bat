@@ -1,19 +1,21 @@
 @echo off
 
 :: Globals
-:: <GameTitle>
-:: <ModTitle>
-:: <URL>
-::
+set "GameTitle="
+set "TitleID="
+set "ModAlias="
+set "ModTitle="
+set "url="
+
+set "VanillaChecksum="
+set "OutFormat="
+
+md "%~dp0bin\"
+md "%~dp0patches\"
+
 :: <NoFileMsg>
 :: <VanillaPatchMsg>
 :: <MismatchMsg>
-::
-:: <VanillaChecksum>
-:: <ModChecksum>
-:: <ModVersion>
-:: <UpdateFile>
-:: <OutFormat>
 
 md "%~dp0bin\"
 md "%~dp0patches\"
@@ -85,7 +87,6 @@ echo.
 Set "MD5="
 for /f "skip=1 Delims=" %%# in ('certutil -hashfile "%~f1" MD5') do if not defined MD5 set MD5=%%#
 set MD5=%MD5: =%
-set "VanillaChecksum=<VanillaChecksum>"
 if "%MD5%" equ "%VanillaChecksum%" goto :VerifyVanilla
 if "%MD5%" equ "<ModChecksum>" set "ModChecksum=<ModChecksum>" & set "ModVersion=<ModVersion>" & set "UpdateFile=<UpdateFile>" & goto :PatchUpdate
 title Error! & cls
