@@ -94,8 +94,8 @@ echo.
 %cecho% {\u07 \u07}
 %cecho% {0c}MD5 checksum mismatch! The MD5 of {07}%~nx1 {0c}does not match the required checksum:{\n}
 echo.
-%cecho% {0e}Required checksum {07}..... {0a}%VanillaChecksum%{\n}
-%cecho% {0e}Your checksum {07}......... {0c}%MD5%{\n}
+%cecho% {0e}%GameTitle% checksum: {0a}%VanillaChecksum%{\n}
+%cecho% {07}%~nx1 {0e}checksum: {0c}%MD5%{\n}
 echo.
 %cecho% {0e}<MismatchMsg>
 pause > nul & exit /b
@@ -106,8 +106,8 @@ cls
 echo.
 %cecho% {0a}MD5 checksum match! The MD5 of {07}%~nx1 {0a}matches the required checksum:{\n}
 echo.
-%cecho% {0e}Required checksum {07}..... {0a}%VanillaChecksum%{\n}
-%cecho% {0e}Your checksum {07}......... {0a}%MD5%{\n}
+%cecho% {0e}Required checksum: {0a}%VanillaChecksum%{\n}
+%cecho% {07}%~nx1 {0e}checksum: {0a}%MD5%{\n}
 
 :ListPatches
 title %ModTitle% Patcher
@@ -144,8 +144,8 @@ cls
 echo.
 %cecho% {0d}%ModTitle% %ModVersion% detected!{\n}
 echo.
-%cecho% {0e}%ModVersion% checksum {07}....... {0a}%ModChecksum%{\n}
-%cecho% {0e}Your checksum {07}......... {0a}%MD5%{\n}
+%cecho% {0e}%ModAlias% %ModVersion% checksum: {0a}%ModChecksum%{\n}
+%cecho% {07}%~nx1 {0e}checksum: {0a}%MD5%{\n}
 echo.
 %cecho% {0e}
 set /p choice="Update to %UpdateFile%?: "
