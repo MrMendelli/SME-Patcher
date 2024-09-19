@@ -1,6 +1,5 @@
 ## Requirements
 - [cecho](https://www.codeproject.com/articles/17033/add-colors-to-batch-files)
-- [md5sum](https://github.com/MrMendelli/md5sum)
 - [xdelta3](https://github.com/jmacd/xdelta)
 
 ## Use
