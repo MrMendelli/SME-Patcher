@@ -5,7 +5,7 @@ set "GameTitle="
 set "TitleID="
 set "ModAlias="
 set "ModTitle="
-set "url="
+set "URL="
 
 set "VanillaChecksum="
 set "OutFormat="
@@ -57,7 +57,7 @@ goto :PatchCheck
 :DownloadPatches
 cls & echo.
 %cecho% {0e}Place patches in the {07}.\patches\ {0e}directory then press any key to proceed...{\n}
-start <URL>
+start %URL%
 pause > nul
 goto :PatchCheck
 
@@ -66,13 +66,13 @@ cls
 if exist "%~1" goto :Main
 title Error! & cls
 echo.
-%cecho% {0c}No game dump supplied! Drag-and-drop your copy of <GameTitle> onto this script to patch it.{\n}
+%cecho% {0c}No game dump supplied! Drag-and-drop your copy of %GameTitle% onto this script to patch it.{\n}
 echo.
 %cecho% {0e}<NoFileMsg>
 pause > nul & exit /b
 
 :Main
-title <ModTitle> Patcher
+title %ModTitle% Patcher
 echo.
 %cecho% {0c}<VanillaPatchMsg>
 echo.
@@ -110,7 +110,7 @@ echo.
 %cecho% {0e}Your checksum {07}......... {0a}%MD5%{\n}
 
 :ListPatches
-title <ModTitle> Patcher
+title %ModTitle% Patcher
 pushd "%~dp0patches"
 echo.
 %cecho% {0e}Available patches:{\n}
@@ -130,19 +130,19 @@ goto :VerifyVanilla
 
 :PatchVanilla
 echo.
-%cecho% {0e}Patching {07}%~nx1{0e} with {07}<ModTitle> %PatchFile%{0e}...{\n}
+%cecho% {0e}Patching {07}%~nx1{0e} with {07}%ModTitle% %PatchFile%{0e}...{\n}
 echo.
-"%~dp0bin\xdelta.exe" -d -f -s "%~1" "%PatchFile%.xdelta" "%~dp1<ModTitle> %PatchFile%.<OutFormat>"
+"%~dp0bin\xdelta.exe" -d -f -s "%~1" "%PatchFile%.xdelta" "%~dp1%ModTitle% %PatchFile%.%OutFormat%"
 %cecho% {02}Patching completed. Press any key to view patched file.{\n}
 pause > nul
-start "" explorer /select, "%~dp1<ModTitle> %PatchFile%.<OutFormat>"
+start "" explorer /select, "%~dp1%ModTitle% %PatchFile%.%OutFormat%"
 exit/b
 
 :PatchUpdate
 set choice=""
 cls
 echo.
-%cecho% {0d}<ModTitle> %ModVersion% detected!{\n}
+%cecho% {0d}%ModTitle% %ModVersion% detected!{\n}
 echo.
 %cecho% {0e}%ModVersion% checksum {07}....... {0a}%ModChecksum%{\n}
 %cecho% {0e}Your checksum {07}......... {0a}%MD5%{\n}
@@ -174,7 +174,7 @@ goto :CheckUpdates
 :DownloadUpdates
 cls & echo.
 %cecho% {0e}Place updates in the {07}.\patches\ {0e}directory then press any key to proceed...{\n}
-start <URL>
+start %URL%
 pause > nul
 goto :CheckUpdates
 
@@ -182,8 +182,8 @@ goto :CheckUpdates
 echo.
 %cecho% {0e}Patching {07}%~nx1{0e} with {07}%UpdateFile%{0e}...{\n}
 echo.
-"%~dp0bin\xdelta.exe" -d -f -s "%~1" "%~dp0patches\%UpdateFile%.update" "%~dp1<ModTitle> %UpdateFile%.<OutFormat>"
+"%~dp0bin\xdelta.exe" -d -f -s "%~1" "%~dp0patches\%UpdateFile%.update" "%~dp1%ModTitle% %UpdateFile%.%OutFormat%"
 %cecho% {02}Patching completed. Press any key to view patched file.{\n}
 pause > nul
-start "" explorer /select, "%~dp1<ModTitle> %UpdateFile%.<OutFormat>"
+start "" explorer /select, "%~dp1%ModTitle% %UpdateFile%.%OutFormat%"
 exit/b

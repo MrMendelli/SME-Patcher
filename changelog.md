@@ -1,6 +1,11 @@
 ## 09/18/39
 ### Minor Update
 ```diff
+* Updated global variables
+```
+
+### Minor Update
+```diff
 * Updated globals
 ```
 
