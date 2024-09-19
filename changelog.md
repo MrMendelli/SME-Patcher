@@ -1,4 +1,10 @@
 ## 09/18/39
+### Moderate Update
+```diff
+* UI updates
+ * Layout and phrasing changed
+```
+
 ### Minor Update
 ```diff
 * Corrected globals mistake
